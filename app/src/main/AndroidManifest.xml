@@ -21,7 +21,8 @@
         <activity android:name=".newAccount" />
         <activity android:name=".password" />
         <activity android:name=".security" />
-        <activity android:name=".Questionaire"></activity>
+        <activity android:name=".Questionaire" />
+        <activity android:name=".Memory"></activity>
     </application>
 
 </manifest>

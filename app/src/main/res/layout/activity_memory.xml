@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.zero.pokedex.Memory">
+
+    <TextView
+        android:id="@+id/txtMemory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Memory Content"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="36dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtMovie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Movie"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginTop="37dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtMemory"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/txtMemory" />
+
+    <TextView
+        android:id="@+id/textAnimal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Animal"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/textColor"
+        android:layout_marginTop="114dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="114dp"
+        app:layout_constraintLeft_toLeftOf="@+id/txtMovie"
+        app:layout_constraintTop_toTopOf="@+id/txtMemory" />
+
+    <TextView
+        android:id="@+id/textBook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Book"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/textColor"
+        android:layout_marginTop="64dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="67dp"
+        app:layout_constraintLeft_toLeftOf="@+id/textAnimal"
+        app:layout_constraintTop_toTopOf="@+id/textAnimal" />
+
+    <TextView
+        android:id="@+id/textColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Color"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintRight_toRightOf="@+id/textBook"
+        android:layout_marginBottom="214dp" />
+</android.support.constraint.ConstraintLayout>

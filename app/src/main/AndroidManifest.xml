@@ -22,7 +22,9 @@
         <activity android:name=".password" />
         <activity android:name=".security" />
         <activity android:name=".Questionaire" />
-        <activity android:name=".Memory"></activity>
+        <activity android:name=".Memory" />
+        <activity android:name=".simplePassword" />
+        <activity android:name=".complexPassword"></activity>
     </application>
 
 </manifest>

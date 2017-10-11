@@ -11,13 +11,16 @@ public class login extends AppCompatActivity {
 
     public Button btn_Create;
     public Button btn_Exist;
+    public Globals global;
     public void create(){
         btn_Create = (Button)findViewById(R.id.btnCreate);
         btn_Create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent create = new Intent(login.this, newAccount.class);
-                startActivity(create);
+                if(global.getPasswordType() == -1) {
+                    Intent create = new Intent(login.this, newAccount.class);
+                    startActivity(create);
+                }
 
             }
         });}
@@ -26,12 +29,27 @@ public class login extends AppCompatActivity {
         btn_Exist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent existing = new Intent(login.this, security.class);
-                startActivity(existing);
+                //If the password type is Simple Password
+                if(global.getPasswordType() == 1) {
+                    Intent existing = new Intent(login.this, simplePassword.class);
+                    startActivity(existing);
+                }
+                else
+                    if(global.getPasswordType() == 2)
+                    {
+                        Intent existing = new Intent(login.this, complexPassword.class);
+                        startActivity(existing);
+                    }else
+                        if(global.getPasswordType() == 0)
+                    {
+                        Intent create = new Intent(login.this, Memory.class);
+                        startActivity(create);
+                    }
 
             }
         });}
     protected void onCreate(Bundle savedInstanceState) {
+        global = (Globals)getApplication();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         create();

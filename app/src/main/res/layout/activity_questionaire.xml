@@ -10,60 +10,65 @@
         android:id="@+id/editColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Favorite Color"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="56dp"
-        tools:layout_constraintLeft_creator="1"
+        android:hint="Enter Favorite Color"
+        android:inputType="text"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
     <EditText
         android:id="@+id/editMovie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:ems="10"
+        android:hint="Enter Favorite Movie"
         android:inputType="textPersonName"
-        android:text="Favorite Movie"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/editColor"
         app:layout_constraintRight_toRightOf="@+id/editColor"
-        android:layout_marginTop="45dp"
         app:layout_constraintTop_toBottomOf="@+id/editColor"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/editColor" />
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
     <EditText
         android:id="@+id/editAnimal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
         android:ems="10"
+        android:hint="Enter Favorite Animal"
         android:inputType="textPersonName"
-        android:text="Favorite Animal"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/editMovie"
         app:layout_constraintRight_toRightOf="@+id/editMovie"
-        android:layout_marginTop="35dp"
         app:layout_constraintTop_toBottomOf="@+id/editMovie"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/editMovie" />
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
     <EditText
         android:id="@+id/editBook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Favorite Book"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
+        android:hint="Enter Favorite Book"
+        android:inputType="text"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/editAnimal"
         app:layout_constraintRight_toRightOf="@+id/editAnimal"
-        android:layout_marginTop="42dp"
         app:layout_constraintTop_toBottomOf="@+id/editAnimal"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/editAnimal" />
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
     <Button
         android:id="@+id/btnSubmitInfo"
@@ -71,10 +76,24 @@
         android:layout_height="wrap_content"
         android:text="Submit"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginEnd="32dp"
+        tools:layout_constraintTop_creator="1"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="31dp" />
+        android:layout_marginTop="45dp"
+        app:layout_constraintTop_toBottomOf="@+id/editBook"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:text="Default Questions"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/editColor" />
 
 </android.support.constraint.ConstraintLayout>

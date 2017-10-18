@@ -21,7 +21,6 @@ public class Memory extends AppCompatActivity {
         setContentView(R.layout.activity_memory);
         btnLogout = (Button)findViewById(R.id.logoutButton);
 
-        //initialize();
     }
 
     public void showAlert(View view)

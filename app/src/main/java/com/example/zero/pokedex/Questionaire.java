@@ -14,35 +14,15 @@ import static com.example.zero.pokedex.R.id.textView2;
 
 public class Questionaire extends AppCompatActivity {
 
-    String Color, Movie, Animal, Book;
-    public Button btnSubmit;
     EditText editColor;
     EditText editMovie;
     EditText editAnimal;
     EditText editBook;
 
 
-
-
-    public Button btn_submitInfo;
     public Globals global;
 
-    public void submitInfo()
-    {
-        btn_submitInfo = (Button)findViewById(R.id.btnSubmitInfo   );
 
-        btn_submitInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                global = (Globals)getApplication();
-                if(global.getPasswordType() == -1) {
-                    global.setPasswordType(0);
-                }
-                Intent password = new Intent(Questionaire.this, Memory.class);
-                startActivity(password);
-
-            }
-        });}
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         global = (Globals)getApplicationContext();
@@ -56,8 +36,29 @@ public class Questionaire extends AppCompatActivity {
         editAnimal = (EditText) findViewById(R.id.editAnimal);
         editBook = (EditText) findViewById(R.id.editBook);
 
-        //btnSubmitInfo = (Button) findViewById((R.id.btnSubmitInfo));
-        submitInfo();
+    }
+
+    public void showAlert(View view)
+    {
+        final AlertDialog.Builder submitAlert = new AlertDialog.Builder(this);
+        submitAlert.setMessage("Are you sure you want to submit?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                        Intent login = new Intent(Questionaire.this, Memory.class);
+                        startActivity(login);
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                })
+                .setTitle("Warning!");
+        submitAlert.show();
 
     }
+
 }

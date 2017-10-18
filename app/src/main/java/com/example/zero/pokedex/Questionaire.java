@@ -1,6 +1,8 @@
 package com.example.zero.pokedex;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,13 +15,13 @@ import static com.example.zero.pokedex.R.id.textView2;
 public class Questionaire extends AppCompatActivity {
 
     String Color, Movie, Animal, Book;
-
+    public Button btnSubmit;
     EditText editColor;
     EditText editMovie;
     EditText editAnimal;
     EditText editBook;
 
-    Button btnSubmitInfo;
+
 
 
     public Button btn_submitInfo;
@@ -46,6 +48,8 @@ public class Questionaire extends AppCompatActivity {
         global = (Globals)getApplicationContext();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questionaire);
+
+
 
         editColor = (EditText) findViewById(R.id.editColor);
         editMovie = (EditText) findViewById(R.id.editMovie);

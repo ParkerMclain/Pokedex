@@ -75,6 +75,7 @@
         android:layout_width="88dp"
         android:layout_height="48dp"
         android:text="Logout"
+        android:onClick="showAlert"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         android:layout_marginEnd="7dp"

@@ -62,7 +62,7 @@ public class LogOut_Box_test {
                 allOf(withId(R.id.btnSubmitInfo), withText("Submit"), isDisplayed()));
         appCompatButton9.perform(click());
 
-        ViewInteraction appCompatButton12 = onView(withText("Yes")).perform(click());
+        onView(withText("Yes")).perform(click());
 
         ViewInteraction appCompatButton10 = onView(
                 allOf(withId(R.id.logoutButton), withText("Logout"), isDisplayed()));

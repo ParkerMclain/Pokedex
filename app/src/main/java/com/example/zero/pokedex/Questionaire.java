@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import static android.R.id.edit;
 import static com.example.zero.pokedex.R.id.textView2;
 
 public class Questionaire extends AppCompatActivity {
@@ -47,6 +48,12 @@ public class Questionaire extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
                         Intent login = new Intent(Questionaire.this, Memory.class);
+                        Bundle editTexts = new Bundle();
+                        editTexts.putString("Color", editColor.getText().toString());
+                        editTexts.putString("Movie", editMovie.getText().toString());
+                        editTexts.putString("Animal", editAnimal.getText().toString());
+                        editTexts.putString("Book", editBook.getText().toString());
+                        login.putExtras(editTexts);
                         startActivity(login);
                     }
                 })

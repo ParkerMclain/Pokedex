@@ -10,77 +10,134 @@
         android:id="@+id/txtMemory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
         android:text="Memory Content"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="36dp"
-        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintHorizontal_bias="0.432"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
     <TextView
         android:id="@+id/txtMovie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="188dp"
         android:text="Movie"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="37dp"
+        app:layout_constraintLeft_toLeftOf="@+id/txtMemory"
         app:layout_constraintTop_toBottomOf="@+id/txtMemory"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/txtMemory" />
+        tools:layout_constraintTop_creator="1" />
 
     <TextView
         android:id="@+id/textAnimal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Animal"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/textColor"
-        android:layout_marginTop="114dp"
-        tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="114dp"
+        android:layout_marginTop="114dp"
+        android:text="Animal"
+        app:layout_constraintBottom_toTopOf="@+id/textColor"
         app:layout_constraintLeft_toLeftOf="@+id/txtMovie"
-        app:layout_constraintTop_toTopOf="@+id/txtMemory" />
+        app:layout_constraintTop_toTopOf="@+id/txtMemory"
+        app:layout_constraintVertical_bias="0.287"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
     <TextView
         android:id="@+id/textBook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Book"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="@+id/textColor"
-        android:layout_marginTop="64dp"
-        tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="67dp"
+        android:layout_marginTop="64dp"
+        android:text="Book"
+        app:layout_constraintBottom_toBottomOf="@+id/textColor"
         app:layout_constraintLeft_toLeftOf="@+id/textAnimal"
-        app:layout_constraintTop_toTopOf="@+id/textAnimal" />
+        app:layout_constraintTop_toTopOf="@+id/textAnimal"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
     <TextView
         android:id="@+id/textColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="88dp"
         android:text="Color"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginEnd="1dp"
         app:layout_constraintRight_toRightOf="@+id/textBook"
-        android:layout_marginBottom="214dp" />
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintRight_creator="1" />
 
     <Button
         android:id="@+id/logoutButton"
-        android:layout_width="88dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
-        android:text="Logout"
-        android:onClick="showAlert"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
         android:layout_marginEnd="7dp"
-        app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="16dp"
+        android:onClick="showAlert"
+        android:text="Logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtDate"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="7dp" />
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
+
+    <TextView
+        android:id="@+id/txtDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:layout_marginEnd="119dp"
+        android:layout_marginStart="141dp"
+        android:text="Date"
+        app:layout_constraintBottom_toTopOf="@+id/txtMemory"
+        app:layout_constraintEnd_toStartOf="@+id/logoutButton"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="886dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="118dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="-4dp" />
+
+    <Button
+        android:id="@+id/setColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        android:text="Set Background Color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/preview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.845"
+        app:srcCompat="@android:drawable/ic_menu_manage"
+        tools:layout_editor_absoluteX="289dp" />
+
 </android.support.constraint.ConstraintLayout>

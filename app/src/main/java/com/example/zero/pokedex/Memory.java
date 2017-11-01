@@ -1,26 +1,30 @@
 package com.example.zero.pokedex;
 
 
-import android.app.Dialog;
+
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Movie;
+
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import static android.os.Build.VERSION_CODES.M;
-import static com.example.zero.pokedex.R.id.txtMovie;
+import java.text.DateFormat;
+import java.util.Date;
+
+
 
 public class Memory extends AppCompatActivity {
-
+    public Date date;
 
     public Button btnLogout;
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memory);
@@ -40,8 +44,9 @@ public class Memory extends AppCompatActivity {
         enteredTexts = extraText.getString("Animal");
         TextView Animal = (TextView)findViewById(R.id.textAnimal);
         Animal.setText(enteredTexts);
-
-
+        TextView textView = (TextView) findViewById(R.id.txtDate);
+        String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
+        textView.setText(currentDateTimeString);
     }
 
     public void showAlert(View view)
@@ -66,4 +71,27 @@ public class Memory extends AppCompatActivity {
         logoutAlert.show();
 
     }
+   /* public class DatabaseOpenHelper extends SQLiteOpenHelper {
+        public static final String DATABASE = "Memory.db";
+        public static final String TABLE = "Memory";
+        public static final int VERSION = 1;
+
+        public DatabaseOpenHelper(Context context) {
+            super(context, DATABASE, null, VERSION);
+        }
+
+        @Override
+        public void onCreate(SQLiteDatabase db) {
+            db.execSQL("CREATE TABLE memo(date INTEGER PRIMARY KEY, memo TEXT);");
+        }
+
+        @Override
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+        }
+    }*/
+
+
 }
+
+

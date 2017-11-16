@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Pokedex</string>
+    <string name="title_activity_setting">Setting</string>
+
+
+    <string-array name = "Colors">
+        <item>White(Default)</item>
+        <item>Red</item>
+        <item>Blue</item>
+        <item>Green</item>
+    </string-array>
+
+
 </resources>

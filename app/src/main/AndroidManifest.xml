@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.zero.pokedex">
 
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+
     <application
         android:name=".Globals"
         android:allowBackup="true"
@@ -25,8 +27,8 @@
         <activity android:name=".Questionaire" />
         <activity android:name=".Memory" />
         <activity android:name=".simplePassword" />
-        <activity android:name=".complexPassword"></activity>
-
+        <activity android:name=".complexPassword" />
+        <activity android:name=".Settings" />
     </application>
-    <uses-permission android:name="android.permission.SET_WALLPAPER"/>
+
 </manifest>

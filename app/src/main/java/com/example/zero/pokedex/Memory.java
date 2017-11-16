@@ -31,7 +31,7 @@ public class Memory extends AppCompatActivity {
 
     public Button btnLogout;
     public Button test;
-
+    View view;  //Used for colors...and fonts?
     private FirebaseAuth mAuth;
 
 
@@ -44,53 +44,67 @@ public class Memory extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memory);
-        btnLogout = (Button)findViewById(R.id.logoutButton);
+        btnLogout = (Button) findViewById(R.id.logoutButton);
         Intent texts = getIntent();
         Bundle extraText = texts.getExtras();
         String enteredTexts;
         enteredTexts = extraText.getString("Movie");
-        TextView Movie = (TextView)findViewById(R.id.txtMovie);
+        TextView Movie = (TextView) findViewById(R.id.txtMovie);
         Movie.setText(enteredTexts);
         enteredTexts = extraText.getString("Book");
-        TextView Book = (TextView)findViewById(R.id.textBook);
+        TextView Book = (TextView) findViewById(R.id.textBook);
         Book.setText(enteredTexts);
         enteredTexts = extraText.getString("Color");
-        TextView Color = (TextView)findViewById(R.id.textColor);
+        TextView Color = (TextView) findViewById(R.id.textColor);
         Color.setText(enteredTexts);
         enteredTexts = extraText.getString("Animal");
-        TextView Animal = (TextView)findViewById(R.id.textAnimal);
+        TextView Animal = (TextView) findViewById(R.id.textAnimal);
         Animal.setText(enteredTexts);
         TextView textView = (TextView) findViewById(R.id.txtDate);
         String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
         textView.setText(currentDateTimeString);
+
+
+        view = this.getWindow().getDecorView(); //For colors
+
     }
 
 
-
-
-    public void showAlert(View view)
-    {
+    public void showAlert(View view) {
         final AlertDialog.Builder logoutAlert = new AlertDialog.Builder(this);
         logoutAlert.setMessage("Are you sure you want to logout?")
-            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    dialogInterface.dismiss();
-                    mAuth.signOut();
-                    Intent login = new Intent(Memory.this, Welcome.class);
-                    startActivity(login);
-                }
-            })
-            .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    dialogInterface.dismiss();
-                }
-            })
-            .setTitle("Warning!");
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                        mAuth.signOut();
+                        Intent login = new Intent(Memory.this, Welcome.class);
+                        startActivity(login);
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                })
+                .setTitle("Warning!");
         logoutAlert.show();
-
     }
+
+    //Change background color of activity
+    public void backRed(View v) {
+        view.setBackgroundResource(R.color.red);
+    }
+
+    public void backWhite(View v) {
+        view.setBackgroundResource(R.color.white);
+    }
+
+    public void backBlue(View v) {
+        view.setBackgroundResource(R.color.blue);
+    }
+}
 
 
    /* public class DatabaseOpenHelper extends SQLiteOpenHelper {
@@ -112,8 +126,3 @@ public class Memory extends AppCompatActivity {
 
         }
     }*/
-
-
-}
-
-

@@ -32,14 +32,14 @@ public class Memory extends AppCompatActivity {
     public Button btnLogout;
     public Button test;
     View view;  //Used for colors...and fonts?
-    private FirebaseAuth mAuth;
+    private FirebaseAuth mauth;
 
 
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
 
-        mAuth = FirebaseAuth.getInstance();
+        mauth = FirebaseAuth.getInstance();
 
 
         super.onCreate(savedInstanceState);
@@ -49,17 +49,17 @@ public class Memory extends AppCompatActivity {
         Bundle extraText = texts.getExtras();
         String enteredTexts;
         enteredTexts = extraText.getString("Movie");
-        TextView Movie = (TextView) findViewById(R.id.txtMovie);
-        Movie.setText(enteredTexts);
+        TextView movie = (TextView) findViewById(R.id.txtMovie);
+        movie.setText(enteredTexts);
         enteredTexts = extraText.getString("Book");
-        TextView Book = (TextView) findViewById(R.id.textBook);
-        Book.setText(enteredTexts);
+        TextView book = (TextView) findViewById(R.id.textBook);
+        book.setText(enteredTexts);
         enteredTexts = extraText.getString("Color");
-        TextView Color = (TextView) findViewById(R.id.textColor);
-        Color.setText(enteredTexts);
+        TextView color = (TextView) findViewById(R.id.textColor);
+        color.setText(enteredTexts);
         enteredTexts = extraText.getString("Animal");
-        TextView Animal = (TextView) findViewById(R.id.textAnimal);
-        Animal.setText(enteredTexts);
+        TextView animal = (TextView) findViewById(R.id.textAnimal);
+        animal.setText(enteredTexts);
         TextView textView = (TextView) findViewById(R.id.txtDate);
         String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
         textView.setText(currentDateTimeString);
@@ -75,16 +75,16 @@ public class Memory extends AppCompatActivity {
         logoutAlert.setMessage("Are you sure you want to logout?")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+                    public void onClick(DialogInterface dialogInterface, int integer) {
                         dialogInterface.dismiss();
-                        mAuth.signOut();
+                        mauth.signOut();
                         Intent login = new Intent(Memory.this, Welcome.class);
                         startActivity(login);
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+                    public void onClick(DialogInterface dialogInterface, int integer) {
                         dialogInterface.dismiss();
                     }
                 })
@@ -93,15 +93,15 @@ public class Memory extends AppCompatActivity {
     }
 
     //Change background color of activity
-    public void backRed(View v) {
+    public void backRed(View viewer) {
         view.setBackgroundResource(R.color.red);
     }
 
-    public void backWhite(View v) {
+    public void backWhite(View viewer) {
         view.setBackgroundResource(R.color.white);
     }
 
-    public void backBlue(View v) {
+    public void backBlue(View viewer) {
         view.setBackgroundResource(R.color.blue);
     }
 }

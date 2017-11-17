@@ -21,9 +21,11 @@ import com.google.firebase.auth.FirebaseUser;
 public class createNewAccount extends AppCompatActivity {
 
     private static final String TAG = "createNewAccount";
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
-    EditText emailField, passwordField, confirmPasswordField;
+    private FirebaseAuth mauth;
+    private FirebaseAuth.AuthStateListener mauthListener;
+    EditText emailField;
+    EditText passwordField;
+    EditText confirmPasswordField;
     Button create;
 
     @Override
@@ -33,8 +35,8 @@ public class createNewAccount extends AppCompatActivity {
         emailField = (EditText) findViewById(R.id.emailText2);
         passwordField = (EditText) findViewById(R.id.passwordText2);
         confirmPasswordField = (EditText) findViewById(R.id.confirmPasswordText);
-        mAuth = FirebaseAuth.getInstance();
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
+        mauth = FirebaseAuth.getInstance();
+        mauthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -46,8 +48,7 @@ public class createNewAccount extends AppCompatActivity {
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
-                    if(user != null)
-                    {
+                    if (user != null) {
                         toastMessage("Successfully signed out of: " + user.getEmail());
                     }
                 }
@@ -59,66 +60,59 @@ public class createNewAccount extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        mAuth.addAuthStateListener(mAuthListener);
+        mauth.addAuthStateListener(mauthListener);
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        if (mAuthListener != null) {
-            mAuth.removeAuthStateListener(mAuthListener);
+        if (mauthListener != null) {
+            mauth.removeAuthStateListener(mauthListener);
         }
     }
 
-    public void createAccount(View view)
-    {
+    public void createAccount(View view) {
         String email = emailField.getText().toString();
         String password = passwordField.getText().toString();
         String confirmPassword = confirmPasswordField.getText().toString();
 
-        if(!email.equals("") && !password.equals(""))
-        {
-            if(password.length() > 5)
-            {
-                if(password.equals(confirmPassword)) {
-                    mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(createNewAccount.this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (!task.isSuccessful()) {
-                                showAlert("Invalid Username / Password!");
-                            } else {
-                                Intent Questionaire = new Intent(createNewAccount.this, Questionaire.class);
-                                startActivity(Questionaire);
-                            }
-                        }
-                    });
-                }
-                else
-                {
+        if (checkTextboxForEmpty(email, password, confirmPassword)) {
+            if (checkPasswordLength(password)) {
+                if (password.equals(confirmPassword)) {
+                    mauth.createUserWithEmailAndPassword(email, password)
+                            .addOnCompleteListener(createNewAccount.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (!task.isSuccessful()) {
+                                        showAlert("Invalid Username / Password!");
+                                    } else {
+                                        Intent questionaire = new Intent(createNewAccount.this, Questionaire.class);
+                                        startActivity(questionaire);
+                                    }
+                                }
+                            });
+                } else {
                     showAlert("Passwords do not match, try again!");
-                    passwordField.setText("");
-                    confirmPasswordField.setText("");
+                    clearPasswordTextBoxes();
 
                 }
-            }
-            else {
+            } else {
                 showAlert("Invalid password! Needs to be 6 or more characters.");
-                passwordField.setText("");
-                confirmPasswordField.setText("");
+                clearPasswordTextBoxes();
             }
 
-        }else{
+        } else {
             showAlert("You did not fill in all the required fields!");
+            clearPasswordTextBoxes();
         }
     }
 
-    public void showAlert(String message)
-    {
+    public void showAlert(String message) {
         final AlertDialog.Builder logoutAlert = new AlertDialog.Builder(this);
         logoutAlert.setMessage(message)
                 .setNegativeButton("OK", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+                    public void onClick(DialogInterface dialogInterface, int integer) {
                         dialogInterface.dismiss();
                     }
                 })
@@ -126,15 +120,36 @@ public class createNewAccount extends AppCompatActivity {
         logoutAlert.show();
     }
 
-    private void toastMessage(String message)
-    {
+    private void toastMessage(String message) {
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
 
-    public void returnToLogin(View view)
-    {
-        Intent backToLogin = new Intent(createNewAccount.this, LoginFirebase.class);
+    public void returnToLogin(View view) {
+        Intent backToLogin = new Intent(createNewAccount.this, loginFirebase.class);
         startActivity(backToLogin);
+
+    }
+
+    public boolean checkPasswordLength(String password) {
+        if (password.length() > 5) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean checkTextboxForEmpty(String email, String password, String confirmPassword) {
+        if (!email.equals("") && !password.equals("") && !confirmPassword.equals("")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void clearPasswordTextBoxes() {
+        passwordField.setText("");
+        confirmPasswordField.setText("");
+        //emailField.setText("");
 
     }
 }

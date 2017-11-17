@@ -2,10 +2,6 @@ package com.example.zero.pokedex;
 
 import android.app.Application;
 
-/**
- * Created by parker on 10/9/17.
- */
-
 public class Globals extends Application {
     private String password = "";
 
@@ -14,23 +10,19 @@ public class Globals extends Application {
     //2 = Complex password
     private int passwordType = -1;
 
-    public void setPasswordType(int type)
-    {
+    public void setPasswordType(int type) {
         this.passwordType = type;
     }
 
-    public int getPasswordType()
-    {
+    public int getPasswordType() {
         return this.passwordType;
     }
 
-    public void setPassword(String pass)
-    {
+    public void setPassword(String pass) {
         this.password = pass;
     }
 
-    public String getPassword()
-    {
+    public String getPassword() {
         return this.password;
     }
 

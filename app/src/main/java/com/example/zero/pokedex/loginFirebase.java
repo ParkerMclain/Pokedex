@@ -24,12 +24,13 @@ import com.google.firebase.auth.FirebaseUser;
 //********* Password: test12345 *************
 //*******************************************
 
-public class LoginFirebase extends AppCompatActivity {
+public class loginFirebase extends AppCompatActivity {
 
-    private static final String TAG = "LoginFirebase";
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
-    EditText emailField, passwordField;
+    private static final String TAG = "loginFirebase";
+    private FirebaseAuth mauth;
+    private FirebaseAuth.AuthStateListener mauthListener;
+    EditText emailField;
+    EditText passwordField;
     Button loginButton;
 
     @Override
@@ -40,9 +41,9 @@ public class LoginFirebase extends AppCompatActivity {
         emailField = (EditText) findViewById(R.id.emailText2);
         passwordField = (EditText) findViewById(R.id.passwordText2);
 
-        mAuth = FirebaseAuth.getInstance();
+        mauth = FirebaseAuth.getInstance();
 
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
+        mauthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -54,8 +55,7 @@ public class LoginFirebase extends AppCompatActivity {
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
-                    if(user != null)
-                    {
+                    if (user != null) {
                         toastMessage("Successfully signed out of: " + user.getEmail());
                     }
                 }
@@ -67,50 +67,48 @@ public class LoginFirebase extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        mAuth.addAuthStateListener(mAuthListener);
+        mauth.addAuthStateListener(mauthListener);
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        if (mAuthListener != null) {
-            mAuth.removeAuthStateListener(mAuthListener);
+        if (mauthListener != null) {
+            mauth.removeAuthStateListener(mauthListener);
         }
     }
 
-    public void loginClick(View view )
-    {
+    public void loginClick(View view ) {
         String email = emailField.getText().toString();
         String password = passwordField.getText().toString();
 
-        if(!email.equals("") && !password.equals(""))
-        {
-            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(LoginFirebase.this, new OnCompleteListener<AuthResult>() {
+        if (checkTextboxForEmpty(email, password)) {
+            mauth.signInWithEmailAndPassword(email, password).addOnCompleteListener(loginFirebase.this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (!task.isSuccessful()) {
                         showAlert("Invalid Username / Password!");
-                    }
-                    else{
+                        passwordField.setText("");
+                    } else {
 
-                        Intent Questionaire = new Intent(LoginFirebase.this, Questionaire.class);
-                        startActivity(Questionaire);
+                        Intent questionaire = new Intent(loginFirebase.this, Questionaire.class);
+                        startActivity(questionaire);
                     }
                 }
             });
-        }else{
+        } else {
             showAlert("You did not fill in all the required fields!");
+            passwordField.setText("");
         }
 
     }
 
-    public void showAlert(String message)
-    {
+    public void showAlert(String message) {
         final AlertDialog.Builder logoutAlert = new AlertDialog.Builder(this);
         logoutAlert.setMessage(message)
                 .setNegativeButton("OK", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+                    public void onClick(DialogInterface dialogInterface, int integer) {
                         dialogInterface.dismiss();
                     }
                 })
@@ -119,16 +117,23 @@ public class LoginFirebase extends AppCompatActivity {
 
     }
 
-    public void createAccount(View view)
-    {
+    public void createAccount(View view) {
 
-        Intent createAccountPage = new Intent(LoginFirebase.this, createNewAccount.class);
+        Intent createAccountPage = new Intent(loginFirebase.this, createNewAccount.class);
         startActivity(createAccountPage);
     }
 
-    private void toastMessage(String message)
-    {
+    private void toastMessage(String message) {
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
+
+    public boolean checkTextboxForEmpty(String email, String password) {
+        if (!email.equals("") && !password.equals("")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
 

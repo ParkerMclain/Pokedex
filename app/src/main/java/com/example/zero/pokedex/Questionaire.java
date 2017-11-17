@@ -39,27 +39,26 @@ public class Questionaire extends AppCompatActivity {
 
     }
 
-    public void showAlert(View view)
-    {
+    public void showAlert(View view) {
         final AlertDialog.Builder submitAlert = new AlertDialog.Builder(this);
         submitAlert.setMessage("Are you sure you want to submit?")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+                    public void onClick(DialogInterface dialogInterface, int integer) {
                         dialogInterface.dismiss();
-                        Intent login = new Intent(Questionaire.this, Memory.class);
                         Bundle editTexts = new Bundle();
                         editTexts.putString("Color", editColor.getText().toString());
                         editTexts.putString("Movie", editMovie.getText().toString());
                         editTexts.putString("Animal", editAnimal.getText().toString());
                         editTexts.putString("Book", editBook.getText().toString());
+                        Intent login = new Intent(Questionaire.this, Memory.class);
                         login.putExtras(editTexts);
                         startActivity(login);
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+                    public void onClick(DialogInterface dialogInterface, int integer) {
                         dialogInterface.dismiss();
                     }
                 })

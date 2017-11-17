@@ -33,7 +33,7 @@
         <activity android:name=".Memory" />
         <activity android:name=".simplePassword" />
         <activity android:name=".complexPassword" />
-        <activity android:name=".LoginFirebase" />
+        <activity android:name=".loginFirebase" />
         <activity android:name=".createNewAccount"></activity>
     </application>
 

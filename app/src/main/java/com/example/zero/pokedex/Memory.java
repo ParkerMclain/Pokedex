@@ -107,6 +107,8 @@ public class Memory extends AppCompatActivity {
 }
 
 
+
+
    /* public class DatabaseOpenHelper extends SQLiteOpenHelper {
         public static final String DATABASE = "Memory.db";
         public static final String TABLE = "Memory";

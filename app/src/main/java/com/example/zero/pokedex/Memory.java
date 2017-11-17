@@ -5,6 +5,7 @@ package com.example.zero.pokedex;
 import android.content.DialogInterface;
 import android.content.Intent;
 
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -103,6 +104,54 @@ public class Memory extends AppCompatActivity {
 
     public void backBlue(View viewer) {
         view.setBackgroundResource(R.color.blue);
+    }
+
+    public void fontChange1(View viewer) {
+        Typeface myFontTypeFace1 = Typeface.createFromAsset(getAssets(), "calibri.ttf");
+        TextView myTextview1 = (TextView) findViewById(R.id.txtDate);
+        TextView myTextview2 = (TextView) findViewById(R.id.txtMemory);
+        TextView myTextview3 = (TextView) findViewById(R.id.textAnimal);
+        TextView myTextview4 = (TextView) findViewById(R.id.txtMovie);
+        TextView myTextview5 = (TextView) findViewById(R.id.textBook);
+        TextView myTextview6 = (TextView) findViewById(R.id.textColor);
+        myTextview1.setTypeface(myFontTypeFace1);
+        myTextview2.setTypeface(myFontTypeFace1);
+        myTextview3.setTypeface(myFontTypeFace1);
+        myTextview4.setTypeface(myFontTypeFace1);
+        myTextview5.setTypeface(myFontTypeFace1);
+        myTextview6.setTypeface(myFontTypeFace1);
+    }
+
+    public void fontChange2(View viewer) {
+        Typeface myFontTypeFace1 = Typeface.createFromAsset(getAssets(), "OldEnglish.TTF");
+        TextView myTextview1 = (TextView) findViewById(R.id.txtDate);
+        TextView myTextview2 = (TextView) findViewById(R.id.txtMemory);
+        TextView myTextview3 = (TextView) findViewById(R.id.textAnimal);
+        TextView myTextview4 = (TextView) findViewById(R.id.txtMovie);
+        TextView myTextview5 = (TextView) findViewById(R.id.textBook);
+        TextView myTextview6 = (TextView) findViewById(R.id.textColor);
+        myTextview1.setTypeface(myFontTypeFace1);
+        myTextview2.setTypeface(myFontTypeFace1);
+        myTextview3.setTypeface(myFontTypeFace1);
+        myTextview4.setTypeface(myFontTypeFace1);
+        myTextview5.setTypeface(myFontTypeFace1);
+        myTextview6.setTypeface(myFontTypeFace1);
+    }
+
+    public void fontChange3(View viewer) {
+        Typeface myFontTypeFace1 = Typeface.createFromAsset(getAssets(), "HARLOWSI.TTF");
+        TextView myTextview1 = (TextView) findViewById(R.id.txtDate);
+        TextView myTextview2 = (TextView) findViewById(R.id.txtMemory);
+        TextView myTextview3 = (TextView) findViewById(R.id.textAnimal);
+        TextView myTextview4 = (TextView) findViewById(R.id.txtMovie);
+        TextView myTextview5 = (TextView) findViewById(R.id.textBook);
+        TextView myTextview6 = (TextView) findViewById(R.id.textColor);
+        myTextview1.setTypeface(myFontTypeFace1);
+        myTextview2.setTypeface(myFontTypeFace1);
+        myTextview3.setTypeface(myFontTypeFace1);
+        myTextview4.setTypeface(myFontTypeFace1);
+        myTextview5.setTypeface(myFontTypeFace1);
+        myTextview6.setTypeface(myFontTypeFace1);
     }
 }
 

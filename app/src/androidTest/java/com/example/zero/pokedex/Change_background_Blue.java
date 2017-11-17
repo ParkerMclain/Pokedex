@@ -1,6 +1,6 @@
 package com.example.zero.pokedex;
 
-
+//This test is testing one senirio from the change background user story
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;

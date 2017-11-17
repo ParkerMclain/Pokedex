@@ -1,5 +1,5 @@
 package com.example.zero.pokedex;
-
+//This test is testing a senirio from the database log-in user story
 
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;

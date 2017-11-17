@@ -127,7 +127,7 @@ public class loginFirebase extends AppCompatActivity {
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
 
-    public boolean checkTextboxForEmpty(String email, String password) {
+    public static boolean checkTextboxForEmpty(String email, String password) {
         if (!email.equals("") && !password.equals("")) {
             return true;
         } else {

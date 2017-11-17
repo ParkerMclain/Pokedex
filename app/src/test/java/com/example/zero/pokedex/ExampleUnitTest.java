@@ -1,6 +1,10 @@
 package com.example.zero.pokedex;
 
 import org.junit.Test;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.*;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import static org.junit.Assert.*;
 
@@ -14,4 +18,13 @@ public class ExampleUnitTest {
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
     }
+/*
+    @RunWith(createNewAccount.class)
+    public void testNumberOfChars()
+    {
+        String email = "test";
+        String password = "test";
+        checkTextboxForEmpty(email,password);
+
+    }*/
 }

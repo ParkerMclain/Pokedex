@@ -130,7 +130,7 @@ public class createNewAccount extends AppCompatActivity {
 
     }
 
-    public boolean checkPasswordLength(String password) {
+    public static boolean checkPasswordLength(String password) {
         if (password.length() > 5) {
             return true;
         } else {

@@ -18,8 +18,6 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static android.support.test.espresso.action.ViewActions.replaceText;
 import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -28,13 +26,13 @@ import static org.hamcrest.Matchers.allOf;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class LogoutBox_Test {
+public class Databasing_Login_NoData {
 
     @Rule
     public ActivityTestRule<Welcome> mActivityTestRule = new ActivityTestRule<>(Welcome.class);
 
     @Test
-    public void logoutBox_Test() {
+    public void databasing_Login_NoData() {
 
         ViewInteraction appCompatButton = onView(
                 allOf(withId(R.id.btnStart), withText("Start"),
@@ -52,26 +50,6 @@ public class LogoutBox_Test {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        ViewInteraction appCompatEditText = onView(
-                allOf(withId(R.id.emailText2),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                0),
-                        isDisplayed()));
-        appCompatEditText.perform(replaceText("test@test.com"), closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText2 = onView(
-                allOf(withId(R.id.passwordText2),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                1),
-                        isDisplayed()));
-        appCompatEditText2.perform(replaceText("test1234"), closeSoftKeyboard());
 
         ViewInteraction appCompatButton2 = onView(
                 allOf(withId(R.id.loginButton), withText("Login"),
@@ -91,40 +69,13 @@ public class LogoutBox_Test {
         }
 
         ViewInteraction appCompatButton3 = onView(
-                allOf(withId(R.id.btnSubmitInfo), withText("Submit"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                4),
-                        isDisplayed()));
-        appCompatButton3.perform(click());
-
-        ViewInteraction appCompatButton4 = onView(
-                allOf(withId(android.R.id.button1), withText("Yes"),
+                allOf(withId(android.R.id.button2), withText("OK"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.buttonPanel),
                                         0),
-                                3)));
-        appCompatButton4.perform(scrollTo(), click());
-
- 
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        ViewInteraction appCompatButton5 = onView(
-                allOf(withId(R.id.logoutButton), withText("Logout"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                5),
-                        isDisplayed()));
-        appCompatButton5.perform(click());
+                                2)));
+        appCompatButton3.perform(scrollTo(), click());
 
     }
 

@@ -35,9 +35,7 @@ public class Databasing_LogIn_Screen {
 
     @Test
     public void databasing_LogIn_Screen() {
-        // Added a sleep statement to match the app's execution delay.
-        // The recommended way to handle such scenarios is to use Espresso idling resources:
-        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
+ 
         /*
         try {
             Thread.sleep(1000);
@@ -55,9 +53,7 @@ public class Databasing_LogIn_Screen {
                         isDisplayed()));
         appCompatButton.perform(click());
 
-        // Added a sleep statement to match the app's execution delay.
-        // The recommended way to handle such scenarios is to use Espresso idling resources:
-        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
+ 
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -74,9 +70,7 @@ public class Databasing_LogIn_Screen {
                         isDisplayed()));
         appCompatButton2.perform(click());
 
-        // Added a sleep statement to match the app's execution delay.
-        // The recommended way to handle such scenarios is to use Espresso idling resources:
-        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
+ 
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -123,9 +117,7 @@ public class Databasing_LogIn_Screen {
                         isDisplayed()));
         appCompatEditText4.perform(pressImeActionButton());
 
-        // Added a sleep statement to match the app's execution delay.
-        // The recommended way to handle such scenarios is to use Espresso idling resources:
-        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
+ 
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {

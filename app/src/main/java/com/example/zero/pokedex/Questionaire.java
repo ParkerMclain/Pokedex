@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import static android.R.id.edit;
-import static com.example.zero.pokedex.R.id.textView2;
 
 public class Questionaire extends AppCompatActivity {
 
@@ -21,12 +20,10 @@ public class Questionaire extends AppCompatActivity {
     EditText editBook;
 
 
-    public Globals global;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        global = (Globals)getApplicationContext();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questionaire);
 

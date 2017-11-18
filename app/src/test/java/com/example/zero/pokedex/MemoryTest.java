@@ -11,8 +11,8 @@ import static org.junit.Assert.*;
  */
 public class MemoryTest {
 
-    /*
-    View view;
+
+    /*View view;
     @Test
     public void testBackRed() throws Exception {
     }
@@ -34,27 +34,22 @@ public class MemoryTest {
 
     }*/
 
-/*
-    @Test
+
+    @Test //Test to see if the user get the right font when the button is hit
     public void testFontChange1() throws Exception {
-        assertEquals(Memory.getFont("OldEnglish.ttf"), "OldEnglish.ttf");
+        assertEquals(Memory.getFont("calibri.ttf"), "calibri.ttf");
 
     }
 
-    @Test
+    @Test//Test to see if the user get the right font when the button is hit
     public void testFontChange2() throws Exception {
-
-        Memory memory = new Memory();
-
-        assertEquals(memory.fontChange1(view), memory.getFont("OldEnglish.ttf"));
-
 
         assertEquals(Memory.getFont("HARLOWSI.ttf"), "HARLOWSI.ttf");
     }
 
-    @Test
+    @Test//Test to see if the user get the right font when the button is hit
     public void testFontChange3() throws Exception {
         assertEquals(Memory.getFont("OldEnglish.ttf"), "OldEnglish.ttf");
-    }*/
+    }
 
 }

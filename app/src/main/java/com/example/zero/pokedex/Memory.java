@@ -116,21 +116,18 @@ public class Memory extends AppCompatActivity {
     }
 
     public void fontChange1(View viewer) {
-        Typeface myFontTypeFace1 = Typeface.createFromAsset(getAssets(), "calibri.ttf");
+        Typeface myFontTypeFace1 = Typeface.createFromAsset(getAssets(), getFont("calibri.ttf").toString());
         changeAllFont(myFontTypeFace1);
-        /*
-        String font;
-        font = "calibri.ttf";
-        getFont(font);*/
+
     }
 
     public void fontChange2(View viewer) {
-        Typeface myFontTypeFace1 = Typeface.createFromAsset(getAssets(), "OldEnglish.TTF");
+        Typeface myFontTypeFace1 = Typeface.createFromAsset(getAssets(), getFont("OldEnglish.TTF").toString());
         changeAllFont(myFontTypeFace1);
     }
 
     public void fontChange3(View viewer) {
-        Typeface myFontTypeFace1 = Typeface.createFromAsset(getAssets(), "HARLOWSI.TTF");
+        Typeface myFontTypeFace1 = Typeface.createFromAsset(getAssets(), getFont("HARLOWSI.TTF").toString());
         changeAllFont(myFontTypeFace1);
     }
 

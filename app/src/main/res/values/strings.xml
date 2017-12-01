@@ -1,6 +1,22 @@
 <resources>
     <string name="app_name">Pokedex</string>
     <string name="title_activity_login">Sign in</string>
+    <string name="font_prompt">Select Font ...</string>
+
+
+    <string-array name="font_arrays">
+        <item></item>
+        <item>calibri.ttf</item>
+        <item>OldEnglish.TTF</item>
+        <item>HARLOWSI.TTF</item>
+    </string-array>
+
+    <string-array name="background_color_arrays">
+        <item></item>
+        <item>Red</item>
+        <item>White</item>
+        <item>Blue</item>
+    </string-array>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>

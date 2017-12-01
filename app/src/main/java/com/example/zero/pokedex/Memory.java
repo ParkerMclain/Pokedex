@@ -6,15 +6,26 @@ import android.content.DialogInterface;
 import android.content.Intent;
 
 import android.graphics.Typeface;
+import android.provider.SyncStateContract;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -24,16 +35,26 @@ import java.util.Date;
 public class Memory extends AppCompatActivity {
     public Date date;
 
+    private static final String TAG = "Memory";
+    private MemoryItem iMemory;
+
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference myRef;
+    private FirebaseAuth mauth;
+
+
+
     public Button btnLogout;
     public Button test;
     View view;  //Used for colors...and fonts?
-    private FirebaseAuth mauth;
     TextView myTextview1;
     TextView myTextview2;
     TextView myTextview3;
     TextView myTextview4;
     TextView myTextview5;
     TextView myTextview6;
+    EditText testText;
 
 
 
@@ -41,11 +62,54 @@ public class Memory extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
 
-        mauth = FirebaseAuth.getInstance();
 
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memory);
+
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mauth = FirebaseAuth.getInstance();
+        myRef = mFirebaseDatabase.getReference();
+
+
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // User is signed in
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+
+                    toastMessage("Successfully signed in with: " + user.getEmail());
+                } else {
+                    // User is signed out
+                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                    if (user != null) {
+                        toastMessage("Successfully signed out of: " + user.getEmail());
+                    }
+                }
+                // ...
+            }
+        };
+
+   /*     // Read from the database
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String value = dataSnapshot.getValue(String.class);
+                //Log.d(TAG, "Value is: " + value);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                //Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });*/
+
 
         myTextview1 = (TextView) findViewById(R.id.txtDate);
         myTextview2 = (TextView) findViewById(R.id.txtMemory);
@@ -53,6 +117,8 @@ public class Memory extends AppCompatActivity {
         myTextview4 = (TextView) findViewById(R.id.txtMovie);
         myTextview5 = (TextView) findViewById(R.id.textBook);
         myTextview6 = (TextView) findViewById(R.id.textColor);
+        testText = (EditText) findViewById(R.id.editText);
+        test = (Button) findViewById(R.id.button7);
 
         btnLogout = (Button) findViewById(R.id.logoutButton);
         Intent texts = getIntent();
@@ -77,6 +143,20 @@ public class Memory extends AppCompatActivity {
 
         view = this.getWindow().getDecorView(); //For colors
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mauth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mauth.removeAuthStateListener(mAuthListener);
+        }
     }
 
 
@@ -146,7 +226,78 @@ public class Memory extends AppCompatActivity {
     }
 
     public void logoutUser() {
-        mauth.signOut();
+        //mauth.signOut();
+    }
+
+    public void writeToFirebase(View view)
+    {
+
+
+        String editTextString = testText.getText().toString();
+
+        if(!editTextString.equals(""))
+        {
+            FirebaseUser user = mauth.getCurrentUser();
+            String userId = user.getUid();
+
+            myRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference("MemoryList")
+                    .child(userId);
+
+            DatabaseReference pushRef = myRef.push();
+            String pushId = pushRef.getKey();
+            //iMemory.setPushId(pushId);
+            pushRef.child("Memory").setValue(editTextString);
+            testText.setText("");
+            /*
+            FirebaseUser user = mauth.getCurrentUser();
+            String userId = user.getUid();
+            myRef.child("MemoryList").child(userId).child("Memories").child(editTextString).setValue("true");
+            toastMessage("Saving: " + editTextString);
+            testText.setText("");*/
+
+
+        }
+        else
+            toastMessage("No information provided!");
+
+
+        /*FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("message");
+
+        String editTextString = testText.getText().toString();
+
+        myRef.setValue(editTextString);*/
+
+
+        /*FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+
+
+
+
+
+
+
+        DatabaseReference memoryRef = FirebaseDatabase
+                .getInstance()
+                .getReference("MEMORIES")
+                .child(uid);
+
+        DatabaseReference pushRef = memoryRef.push();
+        String pushId = pushRef.getKey();
+        //toastMessage(pushId);
+        iMemory.setPushId(pushId);*/
+        //pushRef.setValue(iMemory);
+
+        //Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+
+
+    }
+
+    private void toastMessage(String message) {
+        Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
 }
 

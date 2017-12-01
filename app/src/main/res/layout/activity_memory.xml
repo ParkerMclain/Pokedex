@@ -196,4 +196,25 @@
         app:layout_constraintEnd_toEndOf="@+id/button5"
         app:layout_constraintTop_toBottomOf="@+id/button5" />
 
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="21dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintBottom_toTopOf="@+id/button7"
+        app:layout_constraintEnd_toEndOf="@+id/preview" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Button"
+        android:onClick="writeToFirebase"
+        app:layout_constraintBottom_toTopOf="@+id/logoutButton"
+        app:layout_constraintStart_toStartOf="@+id/logoutButton" />
+
 </android.support.constraint.ConstraintLayout>

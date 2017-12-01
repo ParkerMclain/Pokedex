@@ -79,6 +79,11 @@ public class loginFirebase extends AppCompatActivity {
     }
 
     public void loginClick(View view ) {
+
+        //FOR TESTING PURPOSES ONLY
+        //emailField.setText("test@test.com");
+        //passwordField.setText("test1234");
+
         String email = emailField.getText().toString();
         String password = passwordField.getText().toString();
 
@@ -91,7 +96,7 @@ public class loginFirebase extends AppCompatActivity {
                         passwordField.setText("");
                     } else {
 
-                        Intent questionaire = new Intent(loginFirebase.this, Questionaire.class);
+                        Intent questionaire = new Intent(loginFirebase.this, newMemory.class);
                         startActivity(questionaire);
                     }
                 }
@@ -126,6 +131,7 @@ public class loginFirebase extends AppCompatActivity {
     private void toastMessage(String message) {
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
+
 
     public static boolean checkTextboxForEmpty(String email, String password) {
         if (!email.equals("") && !password.equals("")) {

@@ -50,6 +50,7 @@ public class newMemory extends AppCompatActivity {
 
     public Button btnLogout;
     public Button test;
+    public Button erase;
     EditText testText;
     public View view;
     private ListView listView;
@@ -106,7 +107,15 @@ public class newMemory extends AppCompatActivity {
         test = (Button) findViewById(R.id.button7);
         btnLogout = (Button) findViewById(R.id.logoutButton);
         listView = (ListView) findViewById(R.id.databaseListView);
+        erase = (Button) findViewById((R.id.btnErase));
+        erase.setOnClickListener(new View.OnClickListener() {
+                                     @Override
+                                     public void onClick(View view) {
+                                         myDatabase.setValue(null);
+                                     }
+                                 }
 
+        );
 
         fontSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 

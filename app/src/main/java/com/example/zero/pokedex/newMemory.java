@@ -111,7 +111,9 @@ public class newMemory extends AppCompatActivity {
         erase.setOnClickListener(new View.OnClickListener() {
                                      @Override
                                      public void onClick(View view) {
+
                                          myDatabase.setValue(null);
+
                                      }
                                  }
 

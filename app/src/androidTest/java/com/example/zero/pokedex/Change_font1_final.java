@@ -1,6 +1,7 @@
 package com.example.zero.pokedex;
 
-//This test is testing one senirio from the change background user story
+
+import android.support.test.espresso.DataInteraction;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -16,25 +17,36 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.replaceText;
-import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.anything;
+import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class Change_background_White {
+public class Change_font1_final {
 
     @Rule
     public ActivityTestRule<Welcome> mActivityTestRule = new ActivityTestRule<>(Welcome.class);
 
     @Test
-    public void change_background_White() {
+    public void change_font1_final() {
+        // Added a sleep statement to match the app's execution delay.
+        // The recommended way to handle such scenarios is to use Espresso idling resources:
+        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         ViewInteraction appCompatButton = onView(
                 allOf(withId(R.id.btnStart), withText("Start"),
@@ -46,7 +58,9 @@ public class Change_background_White {
                         isDisplayed()));
         appCompatButton.perform(click());
 
-   
+        // Added a sleep statement to match the app's execution delay.
+        // The recommended way to handle such scenarios is to use Espresso idling resources:
+        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -61,9 +75,11 @@ public class Change_background_White {
                                         0),
                                 0),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("ne"), closeSoftKeyboard());
+        appCompatEditText.perform(replaceText("te"), closeSoftKeyboard());
 
-   
+        // Added a sleep statement to match the app's execution delay.
+        // The recommended way to handle such scenarios is to use Espresso idling resources:
+        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -71,17 +87,17 @@ public class Change_background_White {
         }
 
         ViewInteraction appCompatEditText2 = onView(
-                allOf(withId(R.id.emailText2), withText("ne"),
+                allOf(withId(R.id.emailText2), withText("te"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
                                 0),
                         isDisplayed()));
-        appCompatEditText2.perform(replaceText("new@google.com"));
+        appCompatEditText2.perform(replaceText("test@yahoo.com"));
 
         ViewInteraction appCompatEditText3 = onView(
-                allOf(withId(R.id.emailText2), withText("new@google.com"),
+                allOf(withId(R.id.emailText2), withText("test@yahoo.com"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
@@ -98,7 +114,7 @@ public class Change_background_White {
                                         0),
                                 1),
                         isDisplayed()));
-        appCompatEditText4.perform(replaceText("password"), closeSoftKeyboard());
+        appCompatEditText4.perform(replaceText("test786"), closeSoftKeyboard());
 
         ViewInteraction appCompatButton2 = onView(
                 allOf(withId(R.id.loginButton), withText("Login"),
@@ -110,58 +126,31 @@ public class Change_background_White {
                         isDisplayed()));
         appCompatButton2.perform(click());
 
-   
+        // Added a sleep statement to match the app's execution delay.
+        // The recommended way to handle such scenarios is to use Espresso idling resources:
+        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        ViewInteraction appCompatButton3 = onView(
-                allOf(withId(R.id.btnSubmitInfo), withText("Submit"),
+        ViewInteraction appCompatSpinner = onView(
+                allOf(withId(R.id.spinnerFonts),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
-                                4),
+                                2),
                         isDisplayed()));
-        appCompatButton3.perform(click());
+        appCompatSpinner.perform(click());
 
-        ViewInteraction appCompatButton4 = onView(
-                allOf(withId(android.R.id.button1), withText("Yes"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.buttonPanel),
-                                        0),
-                                3)));
-        appCompatButton4.perform(scrollTo(), click());
-
-   
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        ViewInteraction appCompatButton5 = onView(
-                allOf(withId(R.id.button3), withText("Blue"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                13),
-                        isDisplayed()));
-        appCompatButton5.perform(click());
-
-        ViewInteraction appCompatButton6 = onView(
-                allOf(withId(R.id.button2), withText("White"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                12),
-                        isDisplayed()));
-        appCompatButton6.perform(click());
+        DataInteraction appCompatTextView = onData(anything())
+                .inAdapterView(childAtPosition(
+                        withClassName(is("android.widget.PopupWindow$PopupBackgroundView")),
+                        0))
+                .atPosition(1);
+        appCompatTextView.perform(click());
 
     }
 

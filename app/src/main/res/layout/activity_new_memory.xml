@@ -12,12 +12,12 @@
         android:id="@+id/logoutButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="351dp"
+        android:layout_marginBottom="290dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
         android:onClick="showAlert"
         android:text="Logout"
-        app:layout_constraintBottom_toTopOf="@+id/btnErase"
+        app:layout_constraintBottom_toTopOf="@+id/songPP"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/spinnerBackground"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,19 +31,19 @@
         android:windowSoftInputMode="adjustPan"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <Spinner
         android:id="@+id/spinnerFonts"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="45dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="103dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="15dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="9dp"
         android:entries="@array/font_arrays"
-        app:layout_constraintBottom_toTopOf="@+id/button7"
+        app:layout_constraintBottom_toTopOf="@+id/logoutButton"
         app:layout_constraintEnd_toStartOf="@+id/spinnerBackground"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -51,42 +51,45 @@
     <Spinner
         android:id="@+id/spinnerBackground"
         android:layout_width="0dp"
-        android:layout_height="24dp"
-        android:layout_marginEnd="2dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="21dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginTop="9dp"
         android:entries="@array/background_color_arrays"
-        app:layout_constraintBottom_toBottomOf="@+id/spinnerFonts"
+        app:layout_constraintBottom_toTopOf="@+id/editText"
         app:layout_constraintEnd_toStartOf="@+id/logoutButton"
         app:layout_constraintStart_toEndOf="@+id/spinnerFonts"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerFonts" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button7"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="7dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="3dp"
         android:onClick="writeToFirebase"
         android:text="Add Memory"
         app:layout_constraintBottom_toTopOf="@+id/databaseListView"
         app:layout_constraintEnd_toStartOf="@+id/editText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerFonts" />
+        app:layout_constraintTop_toTopOf="@+id/editText" />
 
     <Button
         android:id="@+id/btnErase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="1dp"
         android:text="Erase"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoutButton" />
+        app:layout_constraintEnd_toEndOf="@+id/songPP"
+        app:layout_constraintTop_toBottomOf="@+id/songPP" />
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
         android:ems="10"
         android:hint="Memory Content"
         android:inputType="textPersonName"
@@ -94,6 +97,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button7"
         app:layout_constraintTop_toBottomOf="@+id/logoutButton" />
+
+    <Button
+        android:id="@+id/songPP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp"
+        android:layout_marginEnd="39dp"
+        android:text="Play/Pause Song"
+        app:layout_constraintBottom_toTopOf="@+id/btnErase"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoutButton" />
+
+    <Button
+        android:id="@+id/songStop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="28dp"
+        android:text="Stop Song"
+        app:layout_constraintBottom_toTopOf="@+id/songPP"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

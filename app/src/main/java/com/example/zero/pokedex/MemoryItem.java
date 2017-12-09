@@ -11,24 +11,20 @@ public class MemoryItem {
     public MemoryItem() { }
 
 
-    public MemoryItem (String title)
-    {
+    public MemoryItem(String title) {
         this.title = title;
         setDateCreated();
     }
 
-    public String getTitle()
-    {
+    public String getTitle() {
         return title;
     }
 
-    public String getDateCreated()
-    {
+    public String getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated()
-    {
+    public void setDateCreated() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm a");
         Date currentDate = new Date();
         this.dateCreated = dateFormat.format(currentDate);

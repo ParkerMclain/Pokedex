@@ -24,7 +24,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Questionaire" />
-        <activity android:name=".Memory" />
         <activity android:name=".loginFirebase" />
         <activity android:name=".createNewAccount" />
         <activity android:name=".newMemory"></activity>

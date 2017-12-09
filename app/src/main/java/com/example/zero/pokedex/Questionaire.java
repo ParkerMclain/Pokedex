@@ -64,25 +64,25 @@ public class Questionaire extends AppCompatActivity {
                         String animal = editAnimal.getText().toString();
                         String book = editBook.getText().toString();
 
-                        if(!color.equals("")) {
+                            if (!color.equals("")) {
                             String id = myDatabase.push().getKey();
                             MemoryItem memory = new MemoryItem(color);
                             myDatabase.child(id).setValue(memory);
                         }
 
-                        if(!movie.equals("")) {
+                            if (!movie.equals("")) {
                             String id = myDatabase.push().getKey();
                             MemoryItem memory = new MemoryItem(movie);
                             myDatabase.child(id).setValue(memory);
                         }
 
-                        if(!animal.equals("")) {
+                            if (!animal.equals("")) {
                             String id = myDatabase.push().getKey();
                             MemoryItem memory = new MemoryItem(animal);
                             myDatabase.child(id).setValue(memory);
                         }
 
-                        if(!book.equals("")) {
+                            if (!book.equals("")) {
                             String id = myDatabase.push().getKey();
                             MemoryItem memory = new MemoryItem(book);
                             myDatabase.child(id).setValue(memory);

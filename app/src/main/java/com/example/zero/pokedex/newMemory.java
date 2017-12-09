@@ -134,15 +134,13 @@ public class newMemory extends AppCompatActivity {
                                        int arg2, long arg3) {
                 String getColor = backgroundColorSpinner.getSelectedItem().toString();
                 switch (getColor) {
-                    case "Blue":
-                        view.setBackgroundResource(R.color.blue);
+                      case "Blue":view.setBackgroundResource(R.color.blue);
                         break;
-                    case "Red":
-                        view.setBackgroundResource(R.color.red);
+                      case "Red":view.setBackgroundResource(R.color.red);
                         break;
-                    case "White":
-                        view.setBackgroundResource(R.color.white);
+                      case "White":view.setBackgroundResource(R.color.white);
                         break;
+                      default:break;
                 }
 
 
@@ -163,24 +161,20 @@ public class newMemory extends AppCompatActivity {
         refreshList();
     }
 
-    public void refreshList()
-    {
+    public void refreshList() {
         myDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 memories.clear();
-                for(DataSnapshot postSnapshot : dataSnapshot.getChildren())
-                {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     MemoryItem memory = postSnapshot.getValue(MemoryItem.class);
                     memories.add(memory);
                 }
-                if(fontType.equals(""))
-                {
+                if (fontType.equals("")) {
                     MemoryList memoryListAdapter = new MemoryList(newMemory.this, memories);
                     listView.setAdapter(memoryListAdapter);
                 }
-                else
-                {
+                else {
                     MemoryList memoryListAdapter = new MemoryList(newMemory.this, memories, fontType);
                     listView.setAdapter(memoryListAdapter);
                 }
@@ -247,18 +241,17 @@ public class newMemory extends AppCompatActivity {
         mauth.signOut();
     }
 
-    public void writeToFirebase(View view)
-    {
+    public void writeToFirebase(View view) {
         String editTextString = testText.getText().toString();
-        if(!editTextString.equals(""))
-        {
+        if (!editTextString.equals("")) {
             String id = myDatabase.push().getKey();
             MemoryItem memory = new MemoryItem(editTextString);
             myDatabase.child(id).setValue(memory);
             testText.setText("");
         }
-        else
+        else {
             toastMessage("No information provided!");
+        }
     }
 
     private void toastMessage(String message) {

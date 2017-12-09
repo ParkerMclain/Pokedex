@@ -3,6 +3,7 @@ package com.example.zero.pokedex;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.provider.SyncStateContract;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -47,6 +48,9 @@ public class newMemory extends AppCompatActivity {
     private FirebaseAuth mauth;
 
 
+    public Button songButton;
+    public Button songButton2;
+    MediaPlayer medPlayer;
 
     public Button btnLogout;
     public Button test;
@@ -102,6 +106,9 @@ public class newMemory extends AppCompatActivity {
         view = this.getWindow().getDecorView();
 
         fontSpinner = (Spinner) findViewById(R.id.spinnerFonts);
+        songButton =(Button)findViewById(R.id.songPP);
+        songButton2 =(Button)findViewById(R.id.songStop);
+        medPlayer = MediaPlayer.create(newMemory.this, R.raw.song1);
         backgroundColorSpinner = (Spinner) findViewById(R.id.spinnerBackground);
         testText = (EditText) findViewById(R.id.editText);
         test = (Button) findViewById(R.id.button7);
@@ -109,6 +116,33 @@ public class newMemory extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.databaseListView);
         erase = (Button) findViewById((R.id.btnErase));
 
+        //Play and Pause Button
+        final MediaPlayer medPla = MediaPlayer.create(this, R.raw.song1);
+        songButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(medPla.isPlaying()) {
+                    medPla.pause();
+                }
+
+                else{
+                    medPla.start();
+                }
+            }
+        });
+
+        //Stop Button
+        songButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(medPla.isPlaying()) {
+                    medPla.stop();
+                    MediaPlayer.create(newMemory.this, R.raw.song1);
+                    medPla.start();
+                }
+
+            }
+        });
 
         fontSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 

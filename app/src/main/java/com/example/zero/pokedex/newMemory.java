@@ -2,7 +2,8 @@ package com.example.zero.pokedex;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.MediaPlayer;
+import android.graphics.Typeface;
+import android.provider.SyncStateContract;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -11,20 +12,24 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -43,11 +48,6 @@ public class newMemory extends AppCompatActivity {
 
 
 
-    //For fun
-    public Button songButton;
-    public Button songButton2;
-    MediaPlayer medPlayer;
-    //
     public Button btnLogout;
     public Button test;
     public Button erase;
@@ -55,7 +55,6 @@ public class newMemory extends AppCompatActivity {
     public View view;
     private ListView listView;
     public Spinner fontSpinner;
-    public Spinner fontSizeSpinner;
     public Spinner backgroundColorSpinner;
 
     //List object to hold memories
@@ -103,12 +102,6 @@ public class newMemory extends AppCompatActivity {
         view = this.getWindow().getDecorView();
 
         fontSpinner = (Spinner) findViewById(R.id.spinnerFonts);
-        ////
-        //fontSizeSpinner = (Spinner) findViewById(R.id.sizeSpinner);
-        songButton =(Button)findViewById(R.id.songPP);
-        songButton2 =(Button)findViewById(R.id.songStop);
-        medPlayer = MediaPlayer.create(newMemory.this, R.raw.song1);
-        ////
         backgroundColorSpinner = (Spinner) findViewById(R.id.spinnerBackground);
         testText = (EditText) findViewById(R.id.editText);
         test = (Button) findViewById(R.id.button7);
@@ -116,45 +109,6 @@ public class newMemory extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.databaseListView);
         erase = (Button) findViewById((R.id.btnErase));
 
-        //Play and Pause Button
-        final MediaPlayer medPla = MediaPlayer.create(this, R.raw.song1);
-        songButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(medPla.isPlaying()) {
-                    medPla.pause();
-                }
-
-                else{
-                    medPla.start();
-                }
-            }
-        });
-
-        //Stop Button
-        songButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(medPla.isPlaying()) {
-                    medPla.stop();
-                    MediaPlayer.create(newMemory.this, R.raw.song1);
-                    medPla.start();
-                }
-
-            }
-        });
-
-
-        erase.setOnClickListener(new View.OnClickListener() {
-                                     @Override
-                                     public void onClick(View view) {
-
-                                         myDatabase.setValue(null);
-
-                                     }
-                                 }
-
-        );
 
         fontSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -172,31 +126,6 @@ public class newMemory extends AppCompatActivity {
 
             }
         });
-
-       /* fontSizeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                       int arg2, long arg3) {
-                String getSize = fontSizeSpinner.getSelectedItem().toString();
-                switch (getSize) {
-                    case "Small":
-                        view.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
-                        break;
-                    case "Medium":
-                        view.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
-                        break;
-                    case "Large":
-                        view.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                        break;
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
-
-            }
-        });*/
-
 
         backgroundColorSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -291,6 +220,27 @@ public class newMemory extends AppCompatActivity {
                 })
                 .setTitle("Warning!");
         logoutAlert.show();
+    }
+    public void showAlert2(View view) {
+        final AlertDialog.Builder erasetAlert = new AlertDialog.Builder(this);
+        erasetAlert.setMessage("Are you sure you want to erase all?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int integer) {
+                        dialogInterface.dismiss();
+                        myDatabase.setValue(null);
+
+
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int integer) {
+                        dialogInterface.dismiss();
+                    }
+                })
+                .setTitle("Warning!");
+        erasetAlert.show();
     }
 
     public void logoutUser() {
